@@ -197,10 +197,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (fingerprintIndex == 2 || fingerprintIndex == 3)
         {
-            mBookmarks.add(mWebView.getUrl().toString());
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_spinner_item, mBookmarks);
-            mSpinner.setAdapter(adapter);
+//            mBookmarks.add(mWebView.getUrl().toString());
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                    android.R.layout.simple_spinner_item, mBookmarks);
+//            mSpinner.setAdapter(adapter);
 
 
             Toast toast = Toast.makeText(this, "Bookmark Added!", Toast.LENGTH_LONG);
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        mSpinner = (Spinner) findViewById(R.id.spinner);
+//        mSpinner = (Spinner) findViewById(R.id.spinner);
 //        mSpinner.setVisibility(View.INVISIBLE);
 
         // Get web view, activate javascript, make it update the edit text and load initial url
@@ -300,34 +300,34 @@ public class MainActivity extends AppCompatActivity {
         messageTextView.setTextSize(25);
         toast.show();
     }
-
-    @Override
-    protected void onPause() {
-        unregisterBroadcastReceiver();
-        resetAll();
-    }
-
-    @Override
-    protected void onResume() {
-        mSpass = new Spass();
-        mContext = this;
-
-        try {
-            mSpass.initialize(this);
-        } catch (SsdkUnsupportedException e) {
-        } catch (UnsupportedOperationException e) {
-        }
-        isFeatureEnabled_fingerprint = mSpass.isFeatureEnabled(Spass.DEVICE_FINGERPRINT);
-        if (isFeatureEnabled_fingerprint) {
-            mSpassFingerprint = new SpassFingerprint(this);
-        } else {
-            return;
-        }
-
-        isFeatureEnabled_index = mSpass.isFeatureEnabled(Spass.DEVICE_FINGERPRINT_FINGER_INDEX);
-
-        registerBroadcastReceiver();
-    }
+//
+//    @Override
+//    protected void onPause() {
+//        unregisterBroadcastReceiver();
+//        resetAll();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        mSpass = new Spass();
+//        mContext = this;
+//
+//        try {
+//            mSpass.initialize(this);
+//        } catch (SsdkUnsupportedException e) {
+//        } catch (UnsupportedOperationException e) {
+//        }
+//        isFeatureEnabled_fingerprint = mSpass.isFeatureEnabled(Spass.DEVICE_FINGERPRINT);
+//        if (isFeatureEnabled_fingerprint) {
+//            mSpassFingerprint = new SpassFingerprint(this);
+//        } else {
+//            return;
+//        }
+//
+//        isFeatureEnabled_index = mSpass.isFeatureEnabled(Spass.DEVICE_FINGERPRINT_FINGER_INDEX);
+//
+//        registerBroadcastReceiver();
+//    }
 
     @Override
     protected void onDestroy() {
